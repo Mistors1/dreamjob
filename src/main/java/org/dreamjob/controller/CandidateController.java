@@ -2,18 +2,18 @@ package org.dreamjob.controller;
 
 import org.dreamjob.model.Candidate;
 import org.dreamjob.service.CandidateService;
-import org.dreamjob.service.SimpleCandidateService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.dreamjob.repository.CandidateRepository;
-import org.dreamjob.repository.MemoryCandidateRepository;
-
 @Controller
 @RequestMapping("/candidates")
 public class CandidateController {
 
-    private final CandidateService candidateService = SimpleCandidateService.getInstance();
+    private final CandidateService candidateService;
+
+    public CandidateController(CandidateService candidateService) {
+        this.candidateService = candidateService;
+    }
 
     @GetMapping
     public String getAll(Model model) {

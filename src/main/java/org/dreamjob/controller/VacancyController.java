@@ -1,19 +1,20 @@
 package org.dreamjob.controller;
 
 import org.dreamjob.model.Vacancy;
-import org.dreamjob.service.SimpleVacancyService;
 import org.dreamjob.service.VacancyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.dreamjob.repository.MemoryVacancyRepository;
-import org.dreamjob.repository.VacancyRepository;
 
 @Controller
 @RequestMapping("/vacancies") /* Работать с кандидатами будем по URI /vacancies/** */
 public class VacancyController {
 
-    private final VacancyService vacancyService = SimpleVacancyService.getInstance();
+    private final VacancyService vacancyService;
+
+    public VacancyController(VacancyService vacancyService) {
+        this.vacancyService = vacancyService;
+    }
 
     @GetMapping
     public String getAll(Model model) {
