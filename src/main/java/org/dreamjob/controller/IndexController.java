@@ -6,9 +6,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class IndexController {
 
-    @GetMapping("/index")
+    @GetMapping({"/", "/index"})
     public String getIndex() {
         return "index";
     }
-
 }

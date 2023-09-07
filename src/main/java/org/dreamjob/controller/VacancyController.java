@@ -3,7 +3,6 @@ package org.dreamjob.controller;
 import org.dreamjob.dto.FileDto;
 import org.dreamjob.model.Vacancy;
 import org.dreamjob.service.CityService;
-import org.dreamjob.service.FileService;
 import org.dreamjob.service.VacancyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,7 @@ public class VacancyController {
 
     private final CityService cityService;
 
-    public VacancyController(VacancyService vacancyService, CityService cityService, FileService fileService) {
+    public VacancyController(VacancyService vacancyService, CityService cityService) {
         this.vacancyService = vacancyService;
         this.cityService = cityService;
     }
@@ -31,7 +30,6 @@ public class VacancyController {
 
     @GetMapping("/create")
     public String getCreationPage(Model model) {
-
         model.addAttribute("cities", cityService.findAll());
         return "vacancies/create";
     }
